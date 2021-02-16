@@ -2,18 +2,10 @@ package icebreaker
 
 import spinal.lib._
 import spinal.core._
+import icebreaker.lib._
 
 object Blinky {
-  def main(args: Array[String]): Unit = {
-    new SpinalConfig(
-      defaultClockDomainFrequency = FixedFrequency(12 MHz),
-      defaultConfigForClockDomains = ClockDomainConfig(
-        resetKind = ASYNC,
-        resetActiveLevel = LOW
-      ),
-      targetDirectory = "target/bitstream"
-    ).generateVerilog(new Blinky)
-  }
+  def main(args: Array[String]) = IceBreaker.generate(new Blinky)
 }
 
 case class Blinky() extends Component {
